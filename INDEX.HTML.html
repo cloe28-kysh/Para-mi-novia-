@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Para mi amor 💖</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: linear-gradient(to bottom, #ffe6f0, #ffccdd);
+      overflow: hidden;
+      font-family: 'Comic Sans MS', cursive;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 50px;
+      color: #d63384;
+      font-size: 36px;
+      animation: pulse 2s infinite;
+    }
+
+    button {
+      display: block;
+      margin: 50px auto;
+      padding: 20px 50px;
+      font-size: 24px;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(45deg);
+      animation: float 5s infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(45deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(45deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>💘 Tócame mi amor 💘</h1>
+  <button onclick="decirTeAmo()">💖 Click aquí 💖</button>
+
+  <audio id="musica" loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3">
+    Tu navegador no soporta audio HTML.
+  </audio>
+
+  <script>
+    function decirTeAmo() {
+      alert("Te amo con todo mi corazón 💖");
+      document.getElementById("musica").play();
+      for (let i = 0; i < 30; i++) {
+        crearCorazon();
+      }
+    }
+
+    function crearCorazon() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }
+  </script>
+
+</body>
+</html>
